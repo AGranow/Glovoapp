@@ -2,10 +2,20 @@ package com.glovoapp.pages;
 
 import com.github.javafaker.Faker;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 
 public class RegistrationPage extends Page {
+
+    public RegistrationPage(WebDriver driver) {
+        super(driver);
+        PageFactory.initElements(driver,this);
+    }
+
+    public static String REG_URL = "https://couriers.glovoapp.com/by/";
+
 
     @FindBy(xpath = "//input[@name='name']")
     private WebElement inputName;
@@ -22,6 +32,10 @@ public class RegistrationPage extends Page {
 
     @FindBy(xpath = "//button/span")
     private WebElement buttonNext;
+
+    public  void openURL(){
+        driver.get(REG_URL);
+    }
 
     public void insertUserData(String cityName) {
         Faker faker = new Faker();

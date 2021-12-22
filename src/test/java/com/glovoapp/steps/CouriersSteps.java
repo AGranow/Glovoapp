@@ -14,13 +14,13 @@ import java.time.Duration;
 
 public class CouriersSteps {
 
-    WebDriver driver = new ChromeDriver();
-    RegistrationPage registrationPage = new RegistrationPage();
-    ResultPage resultPage = new ResultPage();
+
+    RegistrationPage registrationPage;
+    ResultPage resultPage;
 
     @Given("I am on the Registration page")
     public void iAmOnTheRegistrationPage() {
-        driver.get("https://couriers.glovoapp.com/by/");
+        registrationPage.openURL();
     }
 
     @When("I insert registration user data")
