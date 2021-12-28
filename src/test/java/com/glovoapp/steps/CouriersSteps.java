@@ -1,26 +1,24 @@
 package com.glovoapp.steps;
 
 import com.glovoapp.pages.RegistrationPage;
-import com.glovoapp.pages.ResultPage;
+import com.glovoapp.pages.ResultBasicPage;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-
-import java.time.Duration;
 
 public class CouriersSteps {
 
 
-    RegistrationPage registrationPage;
-    ResultPage resultPage;
+    RegistrationPage registrationPage = new RegistrationPage(Hooks.driver);
+    ResultBasicPage resultPage = new ResultBasicPage(Hooks.driver);
+
 
     @Given("I am on the Registration page")
     public void iAmOnTheRegistrationPage() {
         registrationPage.openURL();
+        registrationPage.closeCookiesPopup("Согласиться с использованием всех файлов cookie");
     }
 
     @When("I insert registration user data")

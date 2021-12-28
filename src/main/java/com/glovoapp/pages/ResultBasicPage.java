@@ -4,17 +4,19 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 
-public class ResultPage extends Page {
+public class ResultBasicPage extends BasicPage {
 
 
-    public ResultPage(WebDriver driver) {
+    public ResultBasicPage(WebDriver driver) {
         super(driver);
         PageFactory.initElements(driver,this);
     }
 
     public boolean isElementPresent() {
-        return Page.driver.findElements(By.cssSelector(".vehicle-field-icon")).size() > 0;
+        return driver.findElements(By.cssSelector(".vehicle-field-icon")).size() > 0;
     }
+
+
 }
 
 

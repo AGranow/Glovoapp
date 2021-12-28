@@ -1,23 +1,27 @@
 package com.glovoapp.steps;
 
-import io.cucumber.java.After;
+import com.glovoapp.pages.RegistrationPage;
 import io.cucumber.java.AfterAll;
-import io.cucumber.java.Before;
 import io.cucumber.java.BeforeAll;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
-public class BaseSteps {
+public class Hooks {
 
     public static WebDriver driver;
+
+    RegistrationPage registrationPage = new RegistrationPage(driver);
+
     @BeforeAll
-    public void setupBrowser(){
+    public static void setupBrowser() {
         System.setProperty("webdriver.chrome.driver", "C:/Tools/chromedriver.exe");
         driver = new ChromeDriver();
+        driver.manage().window().maximize();
     }
 
+
     @AfterAll
-    public void tearDown(){
+    public static void tearDown() {
         driver.close();
         driver.quit();
     }
